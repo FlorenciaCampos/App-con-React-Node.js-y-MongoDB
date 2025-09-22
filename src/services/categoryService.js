@@ -17,3 +17,15 @@ export const getCategoryService = async() => {
    return categories;
 }
 
+export const deleteCategoryService = async(id) => {
+   const categoryExist =  await Category.findOne({_id: id })
+   if(!categoryExist){
+    const error = new Error(`La categoria con el ${id} no existe`)
+    error.statusCode = 400
+    throw error
+   }
+   const deletedCategory = await Category.deleteOne({ _id: id })
+   return deletedCategory
+
+}
+
