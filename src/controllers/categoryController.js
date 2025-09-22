@@ -12,3 +12,17 @@ export const createCategory = async (req,res) => {
         
     }
 }
+
+export const getCategoryService = async (req,res) => {
+    try {
+        const categories = await getCategoryService()
+        return res.status(200).json(categories)
+    } catch (error) {
+        if(error.statusCode === 204){
+            return res.json({message: error.message})
+        }
+        return res.status(500).json({ message:"Internal server error", error: error.message })
+
+        
+    }
+}

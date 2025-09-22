@@ -11,6 +11,9 @@ export const getCategoryService = async() => {
    
    if(categories.length === 0) {
     const error = new Error("No hay categorias")
+    error.statusCode = 204;
+    throw error;
    }
+   return categories;
 }
 
