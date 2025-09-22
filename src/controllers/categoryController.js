@@ -1,4 +1,4 @@
-import { createCategoryService } from "../services/categoryService"
+import { createCategoryService } from "../services/categoryService.js"
 
 export const createCategory = async (req,res) => {
     try {

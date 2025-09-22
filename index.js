@@ -4,6 +4,9 @@ import { connectDB } from './db.js'
 import { PORT } from './config.js'
 import { userRouter } from './src/routes/userRoute.js';
 import session from 'express-session';
+import {  categoryRouter } from './src/routes/categoryRoute.js';
+
+
 const app = express();
 //Parsear el cuerpo de la solicitud para que pueda ser leída
 //Parsear a JSON las solicitudes 
@@ -24,6 +27,7 @@ app.use(
 
 //rutas
 app.use("/api/user", userRouter)
+app.use("/api/category", categoryRouter)
 
 //conexion a la DB
 connectDB()

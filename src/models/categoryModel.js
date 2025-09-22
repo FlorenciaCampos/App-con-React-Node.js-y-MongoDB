@@ -1,18 +1,17 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose'
 
-const categoriSchema = new mongoose.Schema ({
+const categorySchema = new mongoose.Schema({
     name: {
         type: String,
-        reqired: true,
+        required: true,
         unique: true,
         trim: true,
-        maxLength: 30,
-        minLength:2
-    },
-    
-    timestamps:true
-    
-    
-})
-
-export default mongoose.model("category", categoriSchema)
+        lowercase: true,
+        maxlength: 30,
+        minlength: 2
+    }
+}, {
+    // Cuando se cree y cuando se modifique se guardaran en los campos createdAt, updatedAt
+    timestamps: true} )
+// El nombre del modelo "category" es el que vamos a utilizar para el ref de productos
+export default mongoose.model("category", categorySchema)
