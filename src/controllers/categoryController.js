@@ -13,7 +13,7 @@ export const createCategory = async (req,res) => {
     }
 }
 
-export const getCategoryService = async (req,res) => {
+export const getCategories = async (req,res) => {
     try {
         const categories = await getCategoryService()
         return res.status(200).json(categories)
