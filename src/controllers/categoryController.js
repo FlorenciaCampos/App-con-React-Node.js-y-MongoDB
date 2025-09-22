@@ -19,7 +19,7 @@ export const getCategories = async (req,res) => {
         return res.status(200).json(categories)
     } catch (error) {
         if(error.statusCode === 204){
-            return res.json({message: error.message})
+            return res.status(204).json({message: error.message})
         }
         return res.status(500).json({ message:"Internal server error", error: error.message })
 
