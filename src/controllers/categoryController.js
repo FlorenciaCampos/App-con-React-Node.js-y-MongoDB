@@ -25,7 +25,7 @@ export const getCategories = async (req,res) => {
   }
 }
 
- const deleteCategory = async (req,res) => {
+ export const deleteCategory = async (req,res) => {
 
     try {
       const categoryId = req.params.id
