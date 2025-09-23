@@ -1,4 +1,4 @@
-import { createProductService } from "../services/productService.js";
+import { createProductService,getProductService, findProductByNameService } from "../services/productService.js";
 
 export const createProduct = async (req, res) => {
     try {
@@ -11,12 +11,26 @@ export const createProduct = async (req, res) => {
 
 export const getProducts = async (req, res) => {
     try {
-        const products = await getProductsService()
+        const products = await getProductService()
         return res.status(200).json(products)
     } catch (error) {
         if(error.statusCode === 400){
             return res.status(400).json({ message: error.message })
         }
         return res.status(500).json({message: "internal server error", error: error.message})
+    }
+}
+
+export const findProductByName = async (req, res) => { 
+    try {
+     const product = await  findProductByNameService(req.name)
+     return res.status(200).json(product)
+
+    } catch (error) {
+        if(error.statusCode === 400){
+            return res.status(400).json({message: error.message})
+        }
+        return res.status(500).json({message: "internal server error", error: error.message})
+  
     }
 }
