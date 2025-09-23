@@ -5,4 +5,4 @@ export const categoryRouter = express.Router()
 
 categoryRouter.post("/create", createCategory)
 categoryRouter.get("/getCategories", getCategories)
-categoryRouter.delete("/delete", deleteCategory)
+categoryRouter.delete("/delete/:id", deleteCategory)
