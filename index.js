@@ -5,6 +5,7 @@ import { PORT } from './config.js'
 import { userRouter } from './src/routes/userRoute.js';
 import session from 'express-session';
 import {  categoryRouter } from './src/routes/categoryRoute.js';
+import { productRoute } from './src/routes/productRouter.js';
 
 
 const app = express();
@@ -28,6 +29,7 @@ app.use(
 //rutas
 app.use("/api/user", userRouter)
 app.use("/api/category", categoryRouter)
+app.use("/api/product", productRoute)
 
 //conexion a la DB
 connectDB()
