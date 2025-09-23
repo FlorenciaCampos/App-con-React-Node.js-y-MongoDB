@@ -17,3 +17,14 @@ export const getProductService = async() =>{
     }
     return products
 }
+
+export const findProductByNameService = async(name) =>{
+    const productExist = await Product.findOne({name})
+
+    if(!productExist){
+        const error = new Error(`el producto ${name} no existe`)
+        error.statusCode = 400
+        throw error
+    }
+    return {productExist}
+}
