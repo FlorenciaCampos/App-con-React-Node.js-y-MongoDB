@@ -23,7 +23,7 @@ export const getProducts = async (req, res) => {
 
 export const findProductByName = async (req, res) => { 
     try {
-     const product = await  findProductByNameService(req.params.name)
+     const product = await  findProductByNameService(req.body.name)
      return res.status(200).json(product)
 
     } catch (error) {

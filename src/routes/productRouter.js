@@ -5,4 +5,4 @@ export const productRoute = express.Router()
 
 productRoute.get("/",getProducts)
 productRoute.post("/create",createProduct)
-productRoute.get("/name/:name",findProductByName)
+productRoute.post("/name/",findProductByName)

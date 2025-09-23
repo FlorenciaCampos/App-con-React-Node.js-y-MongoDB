@@ -18,8 +18,21 @@ export const getProductService = async() =>{
     return products
 }
 
+export const findProductByIdService = async(id) =>{
+    const productExist = await Product.findOne({_id:id})
+
+    if(!productExist){
+        const error = new Error(`el producto ${id} no existe`)
+        error.statusCode = 400
+        throw error
+    }
+    return {productExist}
+}
+
 export const findProductByNameService = async(name) =>{
-    const productExist = await Product.findOne({name})
+    const productExist = await Product.find({
+        name :{$regex:name, $options: 'i'} //regex hace una busqueda parcial y la 'i' no es sensible a mayusculas y minusculas
+    })
 
     if(!productExist){
         const error = new Error(`el producto ${name} no existe`)
