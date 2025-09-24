@@ -41,3 +41,18 @@ export const findProductByNameService = async(name) =>{
     }
     return {productExist}
 }
+
+export const updateProductService = async (productId, updateData) => {
+    const productExist = await Product.findOne({ _id: productId})
+
+    if(!productExist) {
+       const error = new Error("El producto que estas tratando de actualizar no existe")
+       error.statusCode = 400
+       throw error
+    }
+    await Product.findByIdAndUpdate(
+        {_id: productId},
+        updateData,
+        {new: true}
+    )
+}
