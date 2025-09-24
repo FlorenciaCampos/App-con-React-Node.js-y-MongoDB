@@ -1,5 +1,5 @@
 import express from "express";
-import { getProducts, createProduct, findProductByName, findProductById, updateProduct } from "../controllers/productController.js";
+import { getProducts, createProduct, findProductByName, findProductById, updateProduct, deleteProduct } from "../controllers/productController.js";
 
 export const productRoute = express.Router()
 
@@ -8,3 +8,4 @@ productRoute.post("/create",createProduct)
 productRoute.post("/name/",findProductByName)
 productRoute.get("/find-id/:id",findProductById)
 productRoute.put("/update/:id",updateProduct)
+productRoute.delete("/delete/:id",deleteProductProduct)

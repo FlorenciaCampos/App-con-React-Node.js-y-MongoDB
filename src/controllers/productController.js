@@ -1,4 +1,4 @@
-import { createProductService,getProductService, findProductByNameService, findProductByIdService, updateProductService } from "../services/productService.js";
+import { createProductService,getProductService, findProductByNameService, findProductByIdService, updateProductService, deleteProductService } from "../services/productService.js";
 
 export const createProduct = async (req, res) => {
     try {
@@ -62,6 +62,22 @@ export const updateProduct = async (req,res) => {
         }
         return res.status(500).json({message: "internal server error", error: error.message})
   
+        
+    }
+}
+
+export const deleteProduct = async (req,res) => {
+    try {
+        constProductId = req.params.id;
+        const deletedProduct = await deleteProductService(productId)
+        res.status(201).json(deleteProduct)
+
+
+    } catch (error) {
+        if(error.statusCode === 400){
+            return res.status(400).json({message: error.message})
+        }
+        return res.status(500).json({message: "internal server error", error: error.message})
         
     }
 }
