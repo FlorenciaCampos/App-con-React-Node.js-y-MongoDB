@@ -56,3 +56,17 @@ export const updateProductService = async (productId, updateData) => {
         {new: true}
     )
 }
+
+export const deleteProductService = async(productId) => { 
+   const producExist = await Product.findOne({_id: productId})
+   if(!productExist) {
+    const error = new Error("El producto que estas tratando de borrar no existe")
+    error.statusCode = 400
+    throw error
+ }
+
+ const deletedProduct = await Product.findByIdAndDelete(productId)
+ return { message: "Producto eliminado", deletedProduct }
+
+   
+}
