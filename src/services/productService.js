@@ -1,4 +1,5 @@
 import Product from "../models/productsModel.js";
+import { statusEnum } from "../models/productsModel.js"
 
 export const createProductService = async (productData) =>{
     const newProduct = new Product(productData)
@@ -69,4 +70,8 @@ export const deleteProductService = async(productId) => {
  return { message: "Producto eliminado", deletedProduct }
 
    
+}
+
+export const getStatusService = async () =>{
+    return statusEnum;
 }
