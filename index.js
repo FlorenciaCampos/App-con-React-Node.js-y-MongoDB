@@ -6,9 +6,18 @@ import { userRouter } from './src/routes/userRoute.js';
 import session from 'express-session';
 import {  categoryRouter } from './src/routes/categoryRoute.js';
 import { productRoute } from './src/routes/productRouter.js';
+import cors from 'cors';
 
 
 const app = express();
+
+//cors sirve para que el back pueda recibir solicitudes del front
+app.use(cors({
+    origin: "*", //PERMITIMOS LAS CONEXIONES DE CUALQUIER IP:PUERTO
+    methods: ["GET","POST","DELETE","PUT","PATH"]//decidimos cuales metodos son permitidos
+}))
+
+
 //Parsear el cuerpo de la solicitud para que pueda ser leída
 //Parsear a JSON las solicitudes 
 app.use(bodyParser.json())
